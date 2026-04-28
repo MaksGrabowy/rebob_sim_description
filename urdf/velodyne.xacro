@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="velodyne"/>
+        <child link="laser_frame"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="laser_frame"/>
+
+    <gazebo reference="laser_frame">
+        <material>Gazebo/Black</material>
+
+        <sensor name="laser" type="gpu_lidar">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>false</visualize>
+            <update_rate>10</update_rate>
+            <lidar>
+                <scan>
+                    <horizontal>
+                        <samples>360</samples>
+                        <min_angle>-3.14</min_angle>
+                        <max_angle>3.14</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>32</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.54</min_angle>
+                        <max_angle>0.18</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.3</min>
+                    <max>100.0</max>
+                </range>
+                <!-- noise breaks shit up -->
+                <!-- <noise>
+                    <type>gaussian</type>
+                    <mean>0</mean>
+                    <stddev>0.01</stddev>
+                </noise>  --> 
+            </lidar>
+            <topic>velodyne_scan</topic>
+            <gz_frame_id>laser_frame</gz_frame_id>
+            <visualize>true</visualize>
+        </sensor>
+    </gazebo>
+
+</robot>

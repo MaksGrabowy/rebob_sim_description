@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.9">
+  <world name="rocks_world">
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/iche033/worlds/Harmonic World</uri>
+    </include>
+    
+    <gravity>0 0 -9.8</gravity>
+    <!-- <physics default="0" name="default_physics" type="ode">
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>100</real_time_update_rate>
+    </physics> -->
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin
+      filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+    <plugin
+      filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre</render_engine>
+    </plugin>
+    <plugin
+      filename="gz-sim-contact-system"
+      name="gz::sim::systems::Contact">
+    </plugin>
+    <plugin filename="libignition-gazebo-imu-system.so"
+        name="ignition::gazebo::systems::Imu">
+    </plugin>
+    <!-- <plugin filename="RosGzPointCloud"
+        name="ros_gz_point_cloud::PointCloud">
+    </plugin> -->
+
+    <!-- <model name="harmonic_terrain">
+      <include>
+        <uri>package://yosemite</uri>
+        <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/yosemite</uri>
+        <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Harmonic Terrain</uri>
+      </include>
+      <pose>0 0 0 0 0 0</pose>
+    </model> -->
+  </world>
+</sdf>

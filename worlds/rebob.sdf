@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<sdf version="1.10">
+    <model name='rebob' canonical_link='base_link'>
+        <pose relative_to='world'>0 0 0 0 0 0</pose>
+        
+        <!-- base_link -->
+        <link name="base_link">
+            <pose relative_to='__model__'>0 0 0 0 0 0</pose>
+            <inertial>
+                <mass value="234.46307804463302"/>
+                <inertia ixx="8.910108" iyy="21.103199" izz="26.731133" ixy="-0.0" iyz="-0.0" ixz="-0.581566"/>
+            </inertial>
+            <visual name='visual'>
+                <geometry>
+                    <mesh filename="file://meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material>
+                    <ambient>0.0 0.0 1.0 1</ambient>
+                    <diffuse>0.0 0.0 1.0 1</diffuse>
+                    <specular>0.0 0.0 1.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <mesh filename="file://meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+            </collision>
+        </link>
+    </model>
+</sdf>

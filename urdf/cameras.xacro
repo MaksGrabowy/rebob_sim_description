@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <joint name="front_03r_joint" type="fixed">
+        <origin xyz="0.34 0.00 0.3" rpy="1.57 3.14 1.57"/>  
+        <parent link="base_link"/>
+        <child link="front_camera_frame"/>
+    </joint>
+
+    <link name="front_camera_frame"/>
+
+    <gazebo reference="front_camera_frame">
+        <material>Gazebo/Black</material>
+
+        <sensor name="camera_front" type="camera">
+            <pose> 0 0 0 1.57 -1.57 0 </pose>
+            <visualize>false</visualize>
+            <camera>
+                <camera_info_topic>camera_front/camera_info</camera_info_topic>
+                <horizontal_fov>1.089</horizontal_fov>
+                <image>
+                    <format>R8G8B8</format>
+                    <width>640</width>
+                    <height>480</height>
+                </image>
+                <clip>
+                    <near>0.05</near>
+                    <far>30.0</far>
+                </clip>
+                <depth_camera>
+                    <output>camera_front/points</output>
+                </depth_camera>
+            </camera>
+            <topic>camera_front/image_raw</topic>
+            <gz_frame_id>front_camera_frame</gz_frame_id>
+            <update_rate>30</update_rate>
+        </sensor>
+    </gazebo>
+
+    <joint name="rear_03r_joint" type="fixed">
+        <origin xyz="-0.34 0.0 0.3" rpy="1.57 3.14 -1.57"/> 
+        <parent link="base_link"/>
+        <child link="rear_camera_frame"/>
+    </joint>
+
+    <link name="rear_camera_frame"/>
+
+    <gazebo reference="rear_camera_frame">
+        <material>Gazebo/Black</material>
+
+        <sensor name="camera_rear" type="camera">
+            <pose> 0 0 0 1.57 -1.57 0 </pose>
+            <visualize>false</visualize>
+            <camera>
+                <camera_info_topic>camera_rear/camera_info</camera_info_topic>
+                <horizontal_fov>1.089</horizontal_fov>
+                <image>
+                    <format>R8G8B8</format>
+                    <width>640</width>
+                    <height>480</height>
+                </image>
+                <clip>
+                    <near>0.05</near>
+                    <far>30.0</far>
+                </clip>
+            </camera>
+            <topic>camera_rear/image_raw</topic>
+            <gz_frame_id>rear_camera_frame</gz_frame_id>
+            <update_rate>30</update_rate>
+        </sensor>
+    </gazebo>
+
+    <!-- test 3d -->
+    <joint name="front_3d_joint" type="fixed">
+        <origin xyz="0.34 0.03 0.3" rpy="0 0 0"/>  
+        <parent link="base_link"/>
+        <child link="front_depth_frame"/>
+    </joint>
+    <!-- <joint name="front_3d_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 -1.57 0"/>  
+        <parent link="front_camera_frame"/>
+        <child link="front_depth_frame"/>
+    </joint> -->
+
+    <link name="front_depth_frame"/>
+
+    <gazebo reference="front_depth_frame">
+        <material>Gazebo/Black</material>
+
+        <sensor name="depth_front" type="depth_camera">
+            <always_on>1</always_on>
+            <update_rate>20</update_rate>
+            <visualize>0</visualize>
+            <topic>depth_front</topic>
+            <pose>0 0 0 0 0 0</pose>
+            <camera name="depth">
+                <horizontal_fov>1.83</horizontal_fov>
+                <vertical_fov>1.36</vertical_fov>
+                <image>
+                    <width>224</width>
+                    <height>172</height>
+                    <format>RGB_INT8</format>
+                </image>
+                <clip>
+                    <near>0.1</near>
+                    <far>4</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0</mean>
+                    <stddev>0.001</stddev>
+                </noise>
+            </camera>
+            <gz_frame_id>front_depth_frame</gz_frame_id>
+        </sensor>
+    </gazebo>
+
+    <joint name="rear_3d_joint" type="fixed">
+        <origin xyz="-0.34 -0.03 0.3" rpy="0 0 -3.14"/>  
+        <parent link="base_link"/>
+        <child link="rear_depth_frame"/>
+    </joint>
+    <!-- <joint name="rear_3d_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 -1.57 -3.14"/>  
+        <parent link="rear_camera_frame"/>
+        <child link="rear_depth_frame"/>
+    </joint> -->
+
+    <link name="rear_depth_frame"/>
+
+    <gazebo reference="rear_depth_frame">
+        <material>Gazebo/Black</material>
+
+        <sensor name="depth_rear" type="depth_camera">
+            <always_on>1</always_on>
+            <update_rate>20</update_rate>
+            <visualize>0</visualize>
+            <topic>depth_rear</topic>
+            <pose>0 0 0 0 0 0</pose>
+            <camera name="depth">
+                <horizontal_fov>1.83</horizontal_fov>
+                <vertical_fov>1.36</vertical_fov>
+                <image>
+                    <width>224</width>
+                    <height>172</height>
+                    <format>RGB_INT8</format>
+                </image>
+                <clip>
+                    <near>0.1</near>
+                    <far>4</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0</mean>
+                    <stddev>0.001</stddev>
+                </noise>
+            </camera>
+            <gz_frame_id>rear_depth_frame</gz_frame_id>
+        </sensor>
+    </gazebo>
+</robot>

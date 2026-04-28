@@ -1,0 +1,254 @@
+<?xml version="1.0" ?>
+<robot name="minimal_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- <xacro:macro name="minimal_robot" params="prefix"> -->
+
+<xacro:include filename="$(find rebob_sim_description)/urdf/materials.xacro" />
+<!-- <xacro:include filename="$(find rebob_sim_description)/urdf/minimal_robot.gazebo" /> -->
+<xacro:include filename="$(find rebob_sim_description)/urdf/velodyne.xacro" />
+<xacro:include filename="$(find rebob_sim_description)/urdf/imu.xacro" />
+<xacro:include filename="$(find rebob_sim_description)/urdf/cameras.xacro" />
+<!-- <xacro:include filename="$(find rebob_sim_description)/urdf/navsat.xacro" /> -->
+<!-- <xacro:include filename="$(find rebob_sim_description)/urdf/gazebo_control.xacro" /> -->
+<xacro:include filename="$(find rebob_sim_description)/urdf/ros2_control.xacro" />
+<!-- file://$(find rebob_sim_description)/ -->
+<!-- package://rebob_sim_description -->
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.014434200548700926 -3.118137948073763e-16 0.05508555808717281" rpy="0 0 0"/>
+      <mass value="234.46307804463302"/>
+      <inertia ixx="8.910108" iyy="21.103199" izz="26.731133" ixy="-0.0" iyz="-0.0" ixz="-0.581566"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find rebob_sim_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <!-- <geometry>
+        <mesh filename="package://rebob_sim_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry> -->
+      <material name="shit"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find rebob_sim_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <!-- <geometry>
+        <mesh filename="package://rebob_sim_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry> -->
+    </collision>
+  </link>
+
+  <!-- <link name="base_link"/> -->
+
+
+<link name="wheel_rr">
+  <!-- <pose relative_to="base_link">-0.20582 -0.440018 0.072471 0 0 -1.57</pose> -->
+  <inertial>
+    <origin xyz="0.069 5.000000019295125e-07 1.3877787807814457e-17" rpy="0 0 1.57"/>
+    <mass value="88.4730552536459"/>
+    <inertia ixx="1.158616" iyy="0.714609" izz="0.714609" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 -1.57"/>
+    <geometry>
+      <mesh filename="file://$(find rebob_sim_description)/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <!-- <geometry>
+      <mesh filename="package://rebob_sim_description/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry> -->
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.06 0 0" rpy="0 1.57 0"/>
+    <geometry>
+      <!-- <mesh filename="file://$(find rebob_sim_description)/meshes/wheel_rr.stl" scale="0.001 0.001 0.001"/> -->
+      <cylinder length="0.12" radius="0.163"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_fr">
+  <!-- <pose relative_to="base_link">0.209915 -0.440018 0.072471 0 0 -1.57</pose> -->
+  <inertial>
+    <origin xyz="0.06900000000000006 5.000000017629791e-07 4.163336342344337e-17" rpy="0 0 1.57"/>
+    <mass value="88.47305525364591"/>
+    <inertia ixx="1.158616" iyy="0.714609" izz="0.714609" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 -1.57"/>
+    <geometry>
+      <mesh filename="file://$(find rebob_sim_description)/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <!-- <geometry>
+      <mesh filename="package://rebob_sim_description/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry> -->
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.06 0 0" rpy="0 1.57 0"/>
+    <geometry>
+      <!-- <mesh filename="file://$(find rebob_sim_description)/meshes/wheel_fr.stl" scale="0.001 0.001 0.001"/> -->
+      <cylinder length="0.12" radius="0.163"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_rl">
+  <!-- <pose relative_to="base_link">-0.20582 0.439276 0.072471 0 0 -1.57</pose> -->
+  <inertial>
+    <origin xyz="-0.0689999999999999 4.999999977106651e-07 -5.551115123125783e-17" rpy="0 0 1.57"/>
+    <mass value="88.47305525364591"/>
+    <inertia ixx="1.158616" iyy="0.714609" izz="0.714609" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 1.57"/>
+    <geometry>
+      <mesh filename="file://$(find rebob_sim_description)/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <!-- <geometry>
+      <mesh filename="package://rebob_sim_description/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry> -->
+    <material name="silver"/>
+  </visual>
+  <collision>
+   <origin xyz="-0.06 0 0" rpy="0 1.57 0"/>
+    <geometry>
+      <!-- <mesh filename="file://$(find rebob_sim_description)/meshes/wheel_rl.stl" scale="0.001 0.001 0.001"/> -->
+      <cylinder length="0.12" radius="0.163"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_fl">
+  <!-- <pose relative_to="base_link">-0.20582 0.439276 0.072471 0 0 -1.57</pose> -->
+  <inertial>
+    <origin xyz="-0.0689999999999999 4.999999975996428e-07 9.71445146547012e-17" rpy="0 0 1.57"/>
+    <mass value="88.47305525364588"/>
+    <inertia ixx="1.158616" iyy="0.714609" izz="0.714609" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 1.57"/>
+    <geometry>
+      <mesh filename="file://$(find rebob_sim_description)/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <!-- <geometry>
+      <mesh filename="package://rebob_sim_description/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry> -->
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.06 0 0" rpy="0 1.57 0"/>
+    <geometry>
+      <!-- <mesh filename="file://$(find rebob_sim_description)/meshes/wheel_fl.stl" scale="0.001 0.001 0.001"/> -->
+      <cylinder length="0.12" radius="0.163"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="velodyne">
+  <inertial>
+    <origin xyz="4.163336342344337e-17 4.999999999588667e-07 0.042556105337969774" rpy="0 0 0"/>
+    <mass value="3.734417588986906"/>
+    <inertia ixx="0.003845" iyy="0.003845" izz="0.003365" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find rebob_sim_description)/meshes/velodyne.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <!-- <geometry>
+      <mesh filename="package://rebob_sim_description/meshes/velodyne.stl" scale="0.001 0.001 0.001"/>
+    </geometry> -->
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find rebob_sim_description)/meshes/velodyne.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <!-- <geometry>
+      <mesh filename="package://rebob_sim_description/meshes/velodyne.stl" scale="0.001 0.001 0.001"/>
+    </geometry> -->
+  </collision>
+</link>
+
+<joint name="wheel_rr_joint" type="continuous">
+  <origin xyz="-0.20582 -0.440018 0.072471" rpy="0 0 -1.57"/>
+  <parent link="base_link"/>
+  <child link="wheel_rr"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="wheel_fr_joint" type="continuous">
+  <origin xyz="0.209915 -0.440018 0.072471" rpy="0 0 -1.57"/>
+  <parent link="base_link"/>
+  <child link="wheel_fr"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="wheel_rl_joint" type="continuous">
+  <origin xyz="-0.20582 0.439276 0.072471" rpy="0 0 -1.57"/>
+  <parent link="base_link"/>
+  <child link="wheel_rl"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="wheel_fl_joint" type="continuous">
+  <origin xyz="0.209915 0.439276 0.072471" rpy="0 0 -1.57"/>
+  <parent link="base_link"/>
+  <child link="wheel_fl"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+<!-- 
+<joint name="wheel_rr_joint" type="revolute">
+  <origin xyz="-0.20582 -0.440018 0.072471" rpy="0 0 -1.57"/>
+  <parent link="base_link"/>
+  <child link="wheel_rr"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+  <limit lower="-1.79769e+308" upper="-1.79769e+308" effort="1000" velocity="1000"/>
+</joint>
+
+<joint name="wheel_fr_joint" type="revolute">
+  <origin xyz="0.209915 -0.440018 0.072471" rpy="0 0 -1.57"/>
+  <parent link="base_link"/>
+  <child link="wheel_fr"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+  <limit lower="-1.79769e+308" upper="-1.79769e+308" effort="1000" velocity="1000"/>
+</joint>
+
+<joint name="wheel_rl_joint" type="revolute">
+  <origin xyz="-0.20582 0.439276 0.072471" rpy="0 0 -1.57"/>
+  <parent link="base_link"/>
+  <child link="wheel_rl"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+  <limit lower="-1.79769e+308" upper="-1.79769e+308" effort="1000" velocity="1000"/>
+</joint>
+
+<joint name="wheel_fl_joint" type="revolute">
+  <origin xyz="0.209915 0.439276 0.072471" rpy="0 0 -1.57"/>
+  <parent link="base_link"/>
+  <child link="wheel_fl"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+  <limit lower="-1.79769e+308" upper="-1.79769e+308" effort="1000" velocity="1000"/>
+</joint> -->
+
+<!-- <joint name="velodyne_joint" type="fixed">
+  <origin xyz="-0.23182 0.089629 0.366" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="velodyne"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint> -->
+<joint name="velodyne_joint" type="fixed">
+    <origin xyz="-0.26 0.09 0.442" rpy="0 0 1.57"/>
+    <parent link="base_link"/>
+    <child link="velodyne"/>
+    <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+
+<!-- continuous -->
+<!-- </xacro:macro> -->
+</robot>
