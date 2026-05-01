@@ -5,7 +5,7 @@
   <color rgba="0.700 0.700 0.700 1.000"/>
 </material>
 
-<material name="shit">
+<material name="blue">
     <!-- <ambient>0.0 0.0 1.0 1</ambient>
     <diffuse>0.0 0.0 1.0 1</diffuse>
     <specular>0.0 0.0 1.0 1</specular> -->

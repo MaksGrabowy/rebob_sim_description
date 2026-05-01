@@ -28,7 +28,7 @@
       <!-- <geometry>
         <mesh filename="package://rebob_sim_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry> -->
-      <material name="shit"/>
+      <material name="blue"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
